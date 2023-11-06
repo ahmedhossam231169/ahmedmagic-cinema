@@ -352,7 +352,7 @@ section{
         grid-template-columns: repeat(auto-fit,minmax(160px,auto));
     }
 }
-@media(max-width: 472px){
+@media(max-width: 430px){
     .newsletter form .email{
         width: auto;
     }
