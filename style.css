@@ -437,3 +437,57 @@ position: relative;left: 50px;
 #pm1{
     position: relative;right: 30px;
 }
+@media (max-width: 428px)
+ {
+
+    .box {
+
+        width: 200px;
+        height: 150px;
+
+    }
+
+
+    #ahmedBOOk {
+        position: relative;bottom: 50px;
+        top: 5000px;
+        display: none;
+
+    }
+    
+    #footerahmed {
+        position: relative;
+        
+        height: 100px;
+    }
+    
+
+    
+    .footer {
+        position: relative;
+        top: 500px;
+        margin: 0
+    }
+    
+    form2 {
+        position: relative;left: 40px;
+        bottom: 50px
+        
+    }
+    
+    
+    .copyright{
+        position: relative;top: 500px;
+    }
+    #ahmed form{
+      
+        position: relative;right: 120px;
+      
+
+    }
+    #ahmed3{
+        position: relative;right: 90px;
+    
+    }
+
+}
