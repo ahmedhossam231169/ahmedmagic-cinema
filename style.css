@@ -504,4 +504,8 @@ position: relative;left: 50px;
     #Movies span{
         position: relative;bottom: 165px;
     }
+     .action3{
+        position: relative;top: -250px;
+        
+    }
 }
