@@ -437,7 +437,7 @@ position: relative;left: 50px;
 #pm1{
     position: relative;right: 30px;
 }
-@media (max-width: 428px)
+@media (max-width: 450px)
  {
 
     .box {
