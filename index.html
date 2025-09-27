@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <title>Ahmed Cinema</title>
+    <title>Magic Cinema</title>
 </head>
 
 <body>
     <header>
         <a href="#home" class="logo">
-            <i class='bx bxs-movie'></i> Ahmed cinema
+            <i class='bx bxs-movie'></i> Magic Cinema
         </a>
         <div id="menu-icon" class="bx bx-menu"></div>
 
@@ -33,7 +33,7 @@
                 <div class="home-text">
                     <span>marvel univers</span>
                     <h1>Guardians of the galaxy <br> volume 2</h1>
-                    <a href="filmsourth11.html" class="btn"> BOOk Now</a>
+                    <button class="btn" onclick="openBookingPopup('Guardians of the Galaxy Volume 2')">Book Now</button>
                     <a href="" class="play">
                         <i class='bx bx-play'></i>
                     </a>
@@ -44,7 +44,7 @@
                 <div class="home-text">
                     <span>marvel univers</span>
                     <h1>thor <br> love and thunder</h1>
-                    <a href="filmsourth12.html" class="btn"> BOOk Now</a>
+                    <button class="btn" onclick="openBookingPopup('Thor Love and Thunder')">Book Now</button>
                     <a href="" class="play">
                         <i class='bx bx-play'></i>
                     </a>
@@ -55,7 +55,7 @@
                 <div class="home-text">
                     <span>marvel univers</span>
                     <h1>spider-man <br>no way home </h1>
-                    <a href="filmsourth13.html" class="btn"> BOOk Now</a>
+                    <button class="btn" onclick="openBookingPopup('Spider-Man No Way Home')">Book Now</button>
                     <a href="" class="play">
                         <i class='bx bx-play'></i>
                     </a>
@@ -66,7 +66,7 @@
                 <div class="home-text">
                     <span>marvel univers</span>
                     <h1>avengers : <br> End Game</h1>
-                    <a href="filmsourth14.html" class="btn"> BOOk Now</a>
+                    <button class="btn" onclick="openBookingPopup('Avengers: End Game')">Book Now</button>
                     <a href="" class="play">
                         <i class='bx bx-play'></i>
                     </a>
@@ -79,96 +79,84 @@
     <div class="Movies" id="Movies">
         <h2 class="heading"> Opening This Weak </h2>
         <div class="Movies-contanier">
-            <div class="box">
-                <a href="filmsourth1.html">
-                    <div class="box-img">
-                        <img id="open" src="images/m1.jpg" alt="">
-                    </div>
-                </a>
-                <h3>Dr.strange</h3>
+            <div class="box" data-movie="Dr. Strange">
+                <div class="box-img">
+                    <img src="images/m1.jpg" alt="Dr. Strange">
+                </div>
+                <h3>Dr. Strange</h3>
                 <span>120 min | Action</span>
             </div>
-            </a>
-            <div class="box">
-                <a href="filmsourth2.html">
-                    <div class="box-img">
-                        <img  id="open" src="images/m2.jpg" alt="">
-                    </div>
-                </a>
-                <h3>Pahter</h3>
+            
+            <div class="box" data-movie="Pather">
+                <div class="box-img">
+                    <img src="images/m2.jpg" alt="Pather">
+                </div>
+                <h3>Pather</h3>
                 <span>120 min | Action</span>
             </div>
-            <div class="box">
-                <a href="filmsourth3.html">
-                    <div class="box-img">
-                        <img  id="open" src="images/m3.jpg" alt="">
-                    </div>
-                </a>
+            
+            <div class="box" data-movie="Batman VS Superman">
+                <div class="box-img">
+                    <img src="images/m3.jpg" alt="Batman VS Superman">
+                </div>
                 <h3>Batman VS Superman</h3>
-                <span>120 min | Thirller</span>
+                <span>120 min | Thriller</span>
             </div>
-            <div class="box">
-                <a href="filmsourth4.html">
+            
+            <div class="box" data-movie="John Wick 2">
                 <div class="box-img">
-                    <img  id="open" src="images/m4.jpg" alt="">
+                    <img src="images/m4.jpg" alt="John Wick 2">
                 </div>
-                </a>
-                <h3>john wick 2</h3>
+                <h3>John Wick 2</h3>
                 <span>120 min | Action</span>
             </div>
-            <div class="box">
-                <a href="filmsourth5.html">
+            
+            <div class="box" data-movie="Aquaman">
                 <div class="box-img">
-                    <img id="open" src="images/m5.jpg" alt="">
+                    <img src="images/m5.jpg" alt="Aquaman">
                 </div>
-                </a>
                 <h3>Aquaman</h3>
-                <span>120 min | Adventure </span>
+                <span>120 min | Adventure</span>
             </div>
-            <div class="box">
-                <a href="filmsourth6.html">
+            
+            <div class="box" data-movie="Black Panther">
                 <div class="box-img">
-                    <img  id="open" src="images/m6.jpg" alt="">
+                    <img src="images/m6.jpg" alt="Black Panther">
                 </div>
-                </a>
                 <h3>Black Panther</h3>
-                <span>120 min | Thirller</span>
+                <span>120 min | Thriller</span>
             </div>
-            <div class="box">
-                <a href="filmsourth7.html">
+            
+            <div class="box" data-movie="Uncharted">
                 <div class="box-img">
-                    <img  id="open" src="images/m7.jpg" alt="">
+                    <img src="images/m7.jpg" alt="Uncharted">
                 </div>
-                </a>
                 <h3>Uncharted</h3>
                 <span>120 min | Adventure</span>
             </div>
-            <div class="box">
-                <a href="filmsourth8.html">
+            
+            <div class="box" data-movie="Brahmastra">
                 <div class="box-img">
-                    <img id="open" src="images/m8.jpg" alt="">
+                    <img src="images/m8.jpg" alt="Brahmastra">
                 </div>
-                </a>
                 <h3>Brahmastra</h3>
-                <span>120 min | Thirller</span>
+                <span>120 min | Thriller</span>
             </div>
-            <div class="box">
-                <a href="filmsourth9.html">
+            
+            <div class="box" data-movie="Mortal Engines">
                 <div class="box-img">
-                    <img  id="open" src="images/m9.jpg" alt="">
+                    <img src="images/m9.jpg" alt="Mortal Engines">
                 </div>
-                </a>
-                <h3>Mortal-Engines</h3>
+                <h3>Mortal Engines</h3>
                 <span>120 min | Action</span>
             </div>
-            <div class="box">
-                <a href="filmsourth10.html">
+            
+            <div class="box" data-movie="Under World Blood Wars">
                 <div class="box-img">
-                    <img id="open" src="images/m10.jpg" alt="">
+                    <img src="images/m10.jpg" alt="Under World Blood Wars">
                 </div>
-                </a>
                 <h3>Under World Blood Wars</h3>
-                <span>120 min | Thirller</span>
+                <span>120 min | Thriller</span>
             </div>
         </div>
     </div>
@@ -274,6 +262,74 @@
         <p>&#169; Magic Cinema All Right Reserved</p>
     </div>
 
+    <!-- Booking Popup -->
+    <div class="booking-popup" id="bookingPopup">
+        <div class="booking-form">
+            <button class="close-popup" id="closePopup">&times;</button>
+            <h2>Book Your Seat</h2>
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label for="customerName">Full Name</label>
+                    <input type="text" id="customerName" name="customerName" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="movieTitle">Movie</label>
+                    <input type="text" id="movieTitle" name="movieTitle" readonly>
+                </div>
+                
+                <div class="form-group">
+                    <label>Select Seat</label>
+                    <div class="seat-selection">
+                        <div class="seat-option" data-seat="A1">A1</div>
+                        <div class="seat-option" data-seat="A2">A2</div>
+                        <div class="seat-option" data-seat="A3">A3</div>
+                        <div class="seat-option" data-seat="A4">A4</div>
+                        <div class="seat-option" data-seat="A5">A5</div>
+                        <div class="seat-option" data-seat="B1">B1</div>
+                        <div class="seat-option" data-seat="B2">B2</div>
+                        <div class="seat-option" data-seat="B3">B3</div>
+                        <div class="seat-option" data-seat="B4">B4</div>
+                        <div class="seat-option" data-seat="B5">B5</div>
+                        <div class="seat-option" data-seat="C1">C1</div>
+                        <div class="seat-option" data-seat="C2">C2</div>
+                        <div class="seat-option" data-seat="C3">C3</div>
+                        <div class="seat-option" data-seat="C4">C4</div>
+                        <div class="seat-option" data-seat="C5">C5</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Payment Method</label>
+                    <div class="payment-methods">
+                        <div class="payment-option" data-payment="cash">
+                            <i class='bx bx-money'></i>
+                            Cash
+                        </div>
+                        <div class="payment-option" data-payment="card">
+                            <i class='bx bx-credit-card'></i>
+                            Card
+                        </div>
+                        <div class="payment-option" data-payment="mobile">
+                            <i class='bx bx-mobile'></i>
+                            Mobile Payment
+                        </div>
+                        <div class="payment-option" data-payment="online">
+                            <i class='bx bx-world'></i>
+                            Online
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-booking">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="main.js"></script>

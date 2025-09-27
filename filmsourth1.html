@@ -8,86 +8,174 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <title>Magic Cinema</title>
+    <title>Dr. Strange - Magic Cinema</title>
 </head>
 
 <body>
     <header>
         <a href="index.html" class="logo">
-            <i class='bx bxs-movie'></i> magic cinema
+            <i class='bx bxs-movie'></i> Magic Cinema
         </a>
         <div id="menu-icon" class="bx bx-menu"></div>
 
         <ul class="navbar">
-            <li><a href="#Home" class="home-active">Home</a></li>
-            <li><a href="#Movies">Movies</a></li>
-            <li><a href="#coming">Coming Soon</a></li>
-            <li><a href="#social">Contact Us</a></li>
+            <li><a href="index.html#home" class="home-active">Home</a></li>
+            <li><a href="index.html#Movies">Movies</a></li>
+            <li><a href="index.html#coming">Coming Soon</a></li>
+            <li><a href="index.html#social">Contact Us</a></li>
         </ul>
         <a href="#" class="btn">Sign In</a>
     </header>
 
-
-
-    <div id="ahmed">
-
-
-        <div class="Movies" id="Movies">
-
-            <div class="Movies-contanier">
-                <div class="box">
-                    <div class="box-img">
-                        <img src="images/m1.jpg" id="drstring">
+    <!-- Movie Detail Section -->
+    <section class="movie-detail">
+        <div class="movie-container">
+            <div class="movie-poster">
+                <img src="images/m1.jpg" alt="Dr. Strange">
+                <div class="movie-badge">Action</div>
+            </div>
+            
+            <div class="movie-info">
+                <h1 class="movie-title">Dr. Strange</h1>
+                <div class="movie-meta">
+                    <span class="duration"><i class='bx bx-time'></i> 120 min</span>
+                    <span class="rating"><i class='bx bx-star'></i> 8.5/10</span>
+                    <span class="year"><i class='bx bx-calendar'></i> 2016</span>
+                </div>
+                
+                <div class="movie-description">
+                    <h3>Synopsis</h3>
+                    <p>After a car accident, Dr. Stephen Strange learns the mystic arts from the Ancient One. He must choose between his life of fortune and status or leave it all behind to defend the world as the most powerful sorcerer in existence.</p>
+                </div>
+                
+                <div class="cast-section">
+                    <h3>Cast</h3>
+                    <div class="cast-list">
+                        <div class="cast-member">
+                            <span class="actor-name">Benedict Cumberbatch</span>
+                            <span class="character">Dr. Stephen Strange</span>
+                        </div>
+                        <div class="cast-member">
+                            <span class="actor-name">Elizabeth Olsen</span>
+                            <span class="character">Wanda Maximoff</span>
+                        </div>
+                        <div class="cast-member">
+                            <span class="actor-name">Rachel McAdams</span>
+                            <span class="character">Christine Palmer</span>
+                        </div>
+                        <div class="cast-member">
+                            <span class="actor-name">Benedict Wong</span>
+                            <span class="character">Wong</span>
+                        </div>
                     </div>
-                    <h3 id="h5"  style="font-size: xx-large;">Dr.strange</h3><br>
-                    <span   class="action3" id="h5">Category : Action</span><br> <br>
-                    <div id="h5">
-                        <p> Actors : <br>
-                        <p id="Actors2"> Benedict Cumberbatch/Elizabeth Olsen/Rachel McAdams <br>Michael
-                            Stuhlberg/Benedict Wong</p>
-                        </p><br>
-                        <p id="Show times">Show times <br>
-                        <p class="Showtimes">8:00 pm <br>10:00pm</p>
-                        </p>
-                    </div><br>
                 </div>
-
-
-                <P id="ahmedBOOk">Book Now</P>
-
-                <section id="ahmed form">
-                    <form action="" id="form2">
-                       <div id="cheack"> <p  style="color: red;"  id="pm1">8pm<input type="radio" name="4"></p>   <p    id="pm2" style="color: red;">10pm<input type="radio" name="4" id=""></p></div>
-                        <input type="text" placeholder="Frist Name"><br><br>
-                        <input type="text" placeholder="Last Name"><br><br>
-                        <input type="number" name="" id="" placeholder="Number of individuals"><br><br>
-                        <input type="text" placeholder="Enter Number Phone (+20)"><br><br>
-                    </form>
-                    <a href="" class="btn" id="ahmed3"> BOOk Now</a>
-                </section>
+                
+                <div class="showtimes-section">
+                    <h3>Show Times</h3>
+                    <div class="showtimes">
+                        <div class="time-slot">
+                            <span class="time">8:00 PM</span>
+                            <span class="screen">Screen 1</span>
+                        </div>
+                        <div class="time-slot">
+                            <span class="time">10:00 PM</span>
+                            <span class="screen">Screen 1</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="book-now-btn" onclick="openBookingPopup('filmsourth1.html')">
+                    <i class='bx bx-ticket'></i> Book Now
+                </button>
             </div>
         </div>
-        <div id="footerahmed">
+    </section>
 
-            <section class="footer">
-                <a href="" class="logo">
-                    <i class='bx bxs-movie'></i>Magic Cinema
-                </a>
-                <div class="social" id="social">
-                    <a href=""><i class='bx bxl-facebook'></i></a>
-                    <a href=""><i class='bx bxl-twitter'></i></a>
-                    <a href=""><i class='bx bxl-instagram'></i></a>
+    <!-- Booking Popup -->
+    <div class="booking-popup" id="bookingPopup">
+        <div class="booking-form">
+            <button class="close-popup" id="closePopup">&times;</button>
+            <h2>Book Your Seat</h2>
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label for="customerName">Full Name</label>
+                    <input type="text" id="customerName" name="customerName" placeholder="Enter your full name" required>
                 </div>
-            </section>
-            <div class="copyright">
-                <p>&#169; Magic Cinema All Right Reserved</p>
-            </div>
-
+                
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="movieTitle">Movie</label>
+                    <input type="text" id="movieTitle" name="movieTitle" value="Dr. Strange" readonly>
+                </div>
+                
+                <div class="form-group">
+                    <label>Select Seat</label>
+                    <div class="seat-selection">
+                        <div class="seat-option" data-seat="A1">A1</div>
+                        <div class="seat-option" data-seat="A2">A2</div>
+                        <div class="seat-option" data-seat="A3">A3</div>
+                        <div class="seat-option" data-seat="A4">A4</div>
+                        <div class="seat-option" data-seat="A5">A5</div>
+                        <div class="seat-option" data-seat="B1">B1</div>
+                        <div class="seat-option" data-seat="B2">B2</div>
+                        <div class="seat-option" data-seat="B3">B3</div>
+                        <div class="seat-option" data-seat="B4">B4</div>
+                        <div class="seat-option" data-seat="B5">B5</div>
+                        <div class="seat-option" data-seat="C1">C1</div>
+                        <div class="seat-option" data-seat="C2">C2</div>
+                        <div class="seat-option" data-seat="C3">C3</div>
+                        <div class="seat-option" data-seat="C4">C4</div>
+                        <div class="seat-option" data-seat="C5">C5</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Payment Method</label>
+                    <div class="payment-methods">
+                        <div class="payment-option" data-payment="cash">
+                            <i class='bx bx-money'></i>
+                            Cash
+                        </div>
+                        <div class="payment-option" data-payment="card">
+                            <i class='bx bx-credit-card'></i>
+                            Card
+                        </div>
+                        <div class="payment-option" data-payment="mobile">
+                            <i class='bx bx-mobile'></i>
+                            Mobile Payment
+                        </div>
+                        <div class="payment-option" data-payment="online">
+                            <i class='bx bx-world'></i>
+                            Online
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-booking">Confirm Booking</button>
+            </form>
         </div>
+    </div>
 
+    <section class="footer">
+        <a href="index.html" class="logo">
+            <i class='bx bxs-movie'></i>Magic Cinema
+        </a>
+        <div class="social" id="social">
+            <a href=""><i class='bx bxl-facebook'></i></a>
+            <a href=""><i class='bx bxl-twitter'></i></a>
+            <a href=""><i class='bx bxl-instagram'></i></a>
+        </div>
+    </section>
+    <div class="copyright">
+        <p>&#169; Magic Cinema All Right Reserved</p>
+    </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-        <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>
