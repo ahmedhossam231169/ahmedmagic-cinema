@@ -33,7 +33,10 @@
                 <div class="home-text">
                     <span>marvel univers</span>
                     <h1>Guardians of the galaxy <br> volume 2</h1>
-                    <button class="btn" onclick="openBookingPopup('Guardians of the Galaxy Volume 2')">Book Now</button>
+                    <div class="hero-buttons">
+                        <button class="btn" onclick="openBookingPopup('Guardians of the Galaxy Volume 2')">Book Now</button>
+                        <button class="btn btn-secondary" onclick="openQuickView('Guardians of the Galaxy Volume 2')">Quick View</button>
+                    </div>
                     <a href="" class="play">
                         <i class='bx bx-play'></i>
                     </a>
@@ -44,7 +47,10 @@
                 <div class="home-text">
                     <span>marvel univers</span>
                     <h1>thor <br> love and thunder</h1>
-                    <button class="btn" onclick="openBookingPopup('Thor Love and Thunder')">Book Now</button>
+                    <div class="hero-buttons">
+                        <button class="btn" onclick="openBookingPopup('Thor Love and Thunder')">Book Now</button>
+                        <button class="btn btn-secondary" onclick="openQuickView('Thor Love and Thunder')">Quick View</button>
+                    </div>
                     <a href="" class="play">
                         <i class='bx bx-play'></i>
                     </a>
@@ -55,7 +61,10 @@
                 <div class="home-text">
                     <span>marvel univers</span>
                     <h1>spider-man <br>no way home </h1>
-                    <button class="btn" onclick="openBookingPopup('Spider-Man No Way Home')">Book Now</button>
+                    <div class="hero-buttons">
+                        <button class="btn" onclick="openBookingPopup('Spider-Man No Way Home')">Book Now</button>
+                        <button class="btn btn-secondary" onclick="openQuickView('Spider-Man No Way Home')">Quick View</button>
+                    </div>
                     <a href="" class="play">
                         <i class='bx bx-play'></i>
                     </a>
@@ -66,7 +75,10 @@
                 <div class="home-text">
                     <span>marvel univers</span>
                     <h1>avengers : <br> End Game</h1>
-                    <button class="btn" onclick="openBookingPopup('Avengers: End Game')">Book Now</button>
+                    <div class="hero-buttons">
+                        <button class="btn" onclick="openBookingPopup('Avengers: End Game')">Book Now</button>
+                        <button class="btn btn-secondary" onclick="openQuickView('Avengers: End Game')">Quick View</button>
+                    </div>
                     <a href="" class="play">
                         <i class='bx bx-play'></i>
                     </a>
@@ -83,80 +95,140 @@
                 <div class="box-img">
                     <img src="images/m1.jpg" alt="Dr. Strange">
                 </div>
-                <h3>Dr. Strange</h3>
-                <span>120 min | Action</span>
+                <div class="box-content">
+                    <h3>Dr. Strange</h3>
+                    <span>120 min | Action</span>
+                    <div class="movie-card-buttons">
+                        <button class="btn" onclick="openBookingPopup('Dr. Strange')">Book Now</button>
+                        <button class="btn btn-secondary" onclick="openQuickView('Dr. Strange')">Quick View</button>
+                    </div>
+                </div>
             </div>
             
             <div class="box" data-movie="Pather">
                 <div class="box-img">
                     <img src="images/m2.jpg" alt="Pather">
                 </div>
-                <h3>Pather</h3>
-                <span>120 min | Action</span>
+                <div class="box-content">
+                    <h3>Pather</h3>
+                    <span>120 min | Action</span>
+                    <div class="movie-card-buttons">
+                        <button class="btn" onclick="openBookingPopup('Pather')">Book Now</button>
+                        <button class="btn btn-secondary" onclick="openQuickView('Pather')">Quick View</button>
+                    </div>
+                </div>
             </div>
             
             <div class="box" data-movie="Batman VS Superman">
                 <div class="box-img">
                     <img src="images/m3.jpg" alt="Batman VS Superman">
                 </div>
-                <h3>Batman VS Superman</h3>
-                <span>120 min | Thriller</span>
+                <div class="box-content">
+                    <h3>Batman VS Superman</h3>
+                    <span>120 min | Thriller</span>
+                    <div class="movie-card-buttons">
+                        <button class="btn" onclick="openBookingPopup('Batman VS Superman')">Book Now</button>
+                        <button class="btn btn-secondary" onclick="openQuickView('Batman VS Superman')">Quick View</button>
+                    </div>
+                </div>
             </div>
             
             <div class="box" data-movie="John Wick 2">
                 <div class="box-img">
                     <img src="images/m4.jpg" alt="John Wick 2">
                 </div>
-                <h3>John Wick 2</h3>
-                <span>120 min | Action</span>
+                <div class="box-content">
+                    <h3>John Wick 2</h3>
+                    <span>120 min | Action</span>
+                    <div class="movie-card-buttons">
+                        <button class="btn" onclick="openBookingPopup('John Wick 2')">Book Now</button>
+                        <button class="btn btn-secondary" onclick="openQuickView('John Wick 2')">Quick View</button>
+                    </div>
+                </div>
             </div>
             
             <div class="box" data-movie="Aquaman">
                 <div class="box-img">
                     <img src="images/m5.jpg" alt="Aquaman">
                 </div>
-                <h3>Aquaman</h3>
-                <span>120 min | Adventure</span>
+                <div class="box-content">
+                    <h3>Aquaman</h3>
+                    <span>120 min | Adventure</span>
+                    <div class="movie-card-buttons">
+                        <button class="btn" onclick="openBookingPopup('Aquaman')">Book Now</button>
+                        <button class="btn btn-secondary" onclick="openQuickView('Aquaman')">Quick View</button>
+                    </div>
+                </div>
             </div>
             
             <div class="box" data-movie="Black Panther">
                 <div class="box-img">
                     <img src="images/m6.jpg" alt="Black Panther">
                 </div>
-                <h3>Black Panther</h3>
-                <span>120 min | Thriller</span>
+                <div class="box-content">
+                    <h3>Black Panther</h3>
+                    <span>120 min | Thriller</span>
+                    <div class="movie-card-buttons">
+                        <button class="btn" onclick="openBookingPopup('Black Panther')">Book Now</button>
+                        <button class="btn btn-secondary" onclick="openQuickView('Black Panther')">Quick View</button>
+                    </div>
+                </div>
             </div>
             
             <div class="box" data-movie="Uncharted">
                 <div class="box-img">
                     <img src="images/m7.jpg" alt="Uncharted">
                 </div>
-                <h3>Uncharted</h3>
-                <span>120 min | Adventure</span>
+                <div class="box-content">
+                    <h3>Uncharted</h3>
+                    <span>120 min | Adventure</span>
+                    <div class="movie-card-buttons">
+                        <button class="btn" onclick="openBookingPopup('Uncharted')">Book Now</button>
+                        <button class="btn btn-secondary" onclick="openQuickView('Uncharted')">Quick View</button>
+                    </div>
+                </div>
             </div>
             
             <div class="box" data-movie="Brahmastra">
                 <div class="box-img">
                     <img src="images/m8.jpg" alt="Brahmastra">
                 </div>
-                <h3>Brahmastra</h3>
-                <span>120 min | Thriller</span>
+                <div class="box-content">
+                    <h3>Brahmastra</h3>
+                    <span>120 min | Thriller</span>
+                    <div class="movie-card-buttons">
+                        <button class="btn" onclick="openBookingPopup('Brahmastra')">Book Now</button>
+                        <button class="btn btn-secondary" onclick="openQuickView('Brahmastra')">Quick View</button>
+                    </div>
+                </div>
             </div>
             
             <div class="box" data-movie="Mortal Engines">
                 <div class="box-img">
                     <img src="images/m9.jpg" alt="Mortal Engines">
                 </div>
-                <h3>Mortal Engines</h3>
-                <span>120 min | Action</span>
+                <div class="box-content">
+                    <h3>Mortal Engines</h3>
+                    <span>120 min | Action</span>
+                    <div class="movie-card-buttons">
+                        <button class="btn" onclick="openBookingPopup('Mortal Engines')">Book Now</button>
+                        <button class="btn btn-secondary" onclick="openQuickView('Mortal Engines')">Quick View</button>
+                    </div>
+                </div>
             </div>
             
             <div class="box" data-movie="Under World Blood Wars">
                 <div class="box-img">
                     <img src="images/m10.jpg" alt="Under World Blood Wars">
                 </div>
-                <h3>Under World Blood Wars</h3>
-                <span>120 min | Thriller</span>
+                <div class="box-content">
+                    <h3>Under World Blood Wars</h3>
+                    <span>120 min | Thriller</span>
+                    <div class="movie-card-buttons">
+                        <button class="btn" onclick="openBookingPopup('Under World Blood Wars')">Book Now</button>
+                        <button class="btn btn-secondary" onclick="openQuickView('Under World Blood Wars')">Quick View</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -260,6 +332,47 @@
     </section>
     <div class="copyright">
         <p>&#169; Magic Cinema All Right Reserved</p>
+    </div>
+
+    <!-- Quick View Popup -->
+    <div class="quick-view-popup" id="quickViewPopup">
+        <div class="quick-view-content">
+            <button class="close-popup" id="closeQuickView">&times;</button>
+            <div class="quick-view-header">
+                <img id="quickViewPoster" src="" alt="">
+                <div class="quick-view-info">
+                    <h2 id="quickViewTitle"></h2>
+                    <div class="quick-view-meta">
+                        <span id="quickViewYear"></span>
+                        <span id="quickViewRating"></span>
+                        <span id="quickViewDuration"></span>
+                        <span id="quickViewGenre"></span>
+                    </div>
+                    <div class="quick-view-plot">
+                        <h3>Plot</h3>
+                        <p id="quickViewDescription"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="quick-view-details">
+                <div class="detail-section">
+                    <h3>Cast</h3>
+                    <p id="quickViewCast"></p>
+                </div>
+                <div class="detail-section">
+                    <h3>Director</h3>
+                    <p id="quickViewDirector"></p>
+                </div>
+                <div class="detail-section">
+                    <h3>Awards</h3>
+                    <p id="quickViewAwards"></p>
+                </div>
+            </div>
+            <div class="quick-view-actions">
+                <button class="btn" onclick="bookFromQuickView()">Book Now</button>
+                <button class="btn btn-secondary" onclick="closeQuickView()">Close</button>
+            </div>
+        </div>
     </div>
 
     <!-- Booking Popup -->
