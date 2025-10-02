@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bookings.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <title>My Bookings - Magic Cinema</title>
+</head>
+
+<body class="bookings-body">
+    <!-- Navigation -->
+    <header class="bookings-header">
+            <a href="home.html" class="logo">
+                <i class='bx bxs-movie'></i> Magic Cinema
+            </a>
+        <div class="header-actions">
+            <a href="home.html" class="back-btn">
+                <i class='bx bx-arrow-back'></i> Back to Home
+            </a>
+            <div class="user-info" id="userInfo">
+                <span id="userName">Loading...</span>
+                <button onclick="logout()" class="logout-btn">
+                    <i class='bx bx-log-out'></i> Logout
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="bookings-container">
+        <div class="bookings-wrapper">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="header-content">
+                    <h1>
+                        <i class='bx bx-calendar'></i>
+                        My Bookings
+                    </h1>
+                    <p>Manage your movie tickets and reservations</p>
+                </div>
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class='bx bx-movie'></i>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-number" id="totalBookings">0</span>
+                            <span class="stat-label">Total Bookings</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon upcoming">
+                            <i class='bx bx-time-five'></i>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-number" id="upcomingBookings">0</span>
+                            <span class="stat-label">Upcoming</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon completed">
+                            <i class='bx bx-check-circle'></i>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-number" id="completedBookings">0</span>
+                            <span class="stat-label">Completed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">
+                    <i class='bx bx-list-ul'></i> All Bookings
+                </button>
+                <button class="filter-tab" data-filter="upcoming">
+                    <i class='bx bx-time-five'></i> Upcoming
+                </button>
+                <button class="filter-tab" data-filter="completed">
+                    <i class='bx bx-check-circle'></i> Completed
+                </button>
+                <button class="filter-tab" data-filter="cancelled">
+                    <i class='bx bx-x-circle'></i> Cancelled
+                </button>
+            </div>
+
+            <!-- Bookings List -->
+            <div class="bookings-list" id="bookingsList">
+                <!-- Sample Bookings -->
+                <div class="booking-card upcoming" data-status="upcoming">
+                    <div class="booking-header">
+                        <div class="booking-info">
+                            <h3>Avengers: End Game</h3>
+                            <div class="booking-meta">
+                                <span class="booking-id">#BK001</span>
+                                <span class="booking-date">Booked on: Dec 15, 2024</span>
+                            </div>
+                        </div>
+                        <div class="booking-status">
+                            <span class="status-badge upcoming">Upcoming</span>
+                        </div>
+                    </div>
+                    
+                    <div class="booking-details">
+                        <div class="detail-row">
+                            <div class="detail-item">
+                                <i class='bx bx-calendar'></i>
+                                <span>Show Date: Dec 20, 2024</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class='bx bx-time'></i>
+                                <span>Show Time: 7:00 PM</span>
+                            </div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-item">
+                                <i class='bx bx-chair'></i>
+                                <span>Seat: A5</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class='bx bx-credit-card'></i>
+                                <span>Payment: Card</span>
+                            </div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-item">
+                                <i class='bx bx-map'></i>
+                                <span>Screen: Screen 1</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class='bx bx-dollar'></i>
+                                <span>Amount: $15.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="booking-actions">
+                        <button class="action-btn primary" onclick="viewTicket('BK001')">
+                            <i class='bx bx-qr'></i> View Ticket
+                        </button>
+                        <button class="action-btn secondary" onclick="cancelBooking('BK001')">
+                            <i class='bx bx-x'></i> Cancel
+                        </button>
+                    </div>
+                </div>
+
+                <div class="booking-card completed" data-status="completed">
+                    <div class="booking-header">
+                        <div class="booking-info">
+                            <h3>Spider-Man No Way Home</h3>
+                            <div class="booking-meta">
+                                <span class="booking-id">#BK002</span>
+                                <span class="booking-date">Booked on: Dec 10, 2024</span>
+                            </div>
+                        </div>
+                        <div class="booking-status">
+                            <span class="status-badge completed">Completed</span>
+                        </div>
+                    </div>
+                    
+                    <div class="booking-details">
+                        <div class="detail-row">
+                            <div class="detail-item">
+                                <i class='bx bx-calendar'></i>
+                                <span>Show Date: Dec 12, 2024</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class='bx bx-time'></i>
+                                <span>Show Time: 9:30 PM</span>
+                            </div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-item">
+                                <i class='bx bx-chair'></i>
+                                <span>Seat: B3</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class='bx bx-credit-card'></i>
+                                <span>Payment: Cash</span>
+                            </div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-item">
+                                <i class='bx bx-map'></i>
+                                <span>Screen: Screen 2</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class='bx bx-dollar'></i>
+                                <span>Amount: $18.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="booking-actions">
+                        <button class="action-btn primary" onclick="viewTicket('BK002')">
+                            <i class='bx bx-qr'></i> View Ticket
+                        </button>
+                        <button class="action-btn secondary" onclick="rateMovie('Spider-Man No Way Home')">
+                            <i class='bx bx-star'></i> Rate Movie
+                        </button>
+                    </div>
+                </div>
+
+                <div class="booking-card upcoming" data-status="upcoming">
+                    <div class="booking-header">
+                        <div class="booking-info">
+                            <h3>Thor Love and Thunder</h3>
+                            <div class="booking-meta">
+                                <span class="booking-id">#BK003</span>
+                                <span class="booking-date">Booked on: Dec 18, 2024</span>
+                            </div>
+                        </div>
+                        <div class="booking-status">
+                            <span class="status-badge upcoming">Upcoming</span>
+                        </div>
+                    </div>
+                    
+                    <div class="booking-details">
+                        <div class="detail-row">
+                            <div class="detail-item">
+                                <i class='bx bx-calendar'></i>
+                                <span>Show Date: Dec 25, 2024</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class='bx bx-time'></i>
+                                <span>Show Time: 2:30 PM</span>
+                            </div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-item">
+                                <i class='bx bx-chair'></i>
+                                <span>Seat: C1</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class='bx bx-credit-card'></i>
+                                <span>Payment: Mobile Payment</span>
+                            </div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-item">
+                                <i class='bx bx-map'></i>
+                                <span>Screen: Screen 3</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class='bx bx-dollar'></i>
+                                <span>Amount: $16.50</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="booking-actions">
+                        <button class="action-btn primary" onclick="viewTicket('BK003')">
+                            <i class='bx bx-qr'></i> View Ticket
+                        </button>
+                        <button class="action-btn secondary" onclick="cancelBooking('BK003')">
+                            <i class='bx bx-x'></i> Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <div class="empty-icon">
+                    <i class='bx bx-calendar-x'></i>
+                </div>
+                <h3>No Bookings Found</h3>
+                <p>You don't have any bookings in this category yet.</p>
+                <a href="home.html" class="btn primary">
+                    <i class='bx bx-plus'></i> Book a Movie
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Ticket Modal -->
+    <div class="ticket-modal" id="ticketModal">
+        <div class="ticket-content">
+            <button class="close-modal" onclick="closeTicketModal()">
+                <i class='bx bx-x'></i>
+            </button>
+            <div class="ticket-header">
+                <h2>Movie Ticket</h2>
+                <span class="ticket-id" id="ticketId">#BK001</span>
+            </div>
+            <div class="ticket-body">
+                <div class="ticket-info">
+                    <div class="movie-poster">
+                        <img id="ticketPoster" src="images/home4.png" alt="Movie Poster">
+                    </div>
+                    <div class="ticket-details">
+                        <h3 id="ticketMovieTitle">Avengers: End Game</h3>
+                        <div class="ticket-meta">
+                            <div class="meta-item">
+                                <i class='bx bx-calendar'></i>
+                                <span id="ticketDate">Dec 20, 2024</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class='bx bx-time'></i>
+                                <span id="ticketTime">7:00 PM</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class='bx bx-chair'></i>
+                                <span id="ticketSeat">Seat A5</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class='bx bx-map'></i>
+                                <span id="ticketScreen">Screen 1</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="qr-code">
+                    <div class="qr-placeholder">
+                        <i class='bx bx-qr'></i>
+                        <p>QR Code</p>
+                    </div>
+                </div>
+            </div>
+            <div class="ticket-footer">
+                <button class="btn primary" onclick="downloadTicket()">
+                    <i class='bx bx-download'></i> Download Ticket
+                </button>
+                <button class="btn secondary" onclick="shareTicket()">
+                    <i class='bx bx-share'></i> Share Ticket
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <i class="toast-icon"></i>
+            <span class="toast-message"></span>
+        </div>
+        <button class="toast-close">&times;</button>
+    </div>
+
+    <script src="bookings.js"></script>
+</body>
+
+</html>

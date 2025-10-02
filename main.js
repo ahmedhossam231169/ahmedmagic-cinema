@@ -3,6 +3,381 @@ let header = document.querySelector('header');
 let menu = document.querySelector('#menu-icon');
 let navbar = document.querySelector('.navbar');
 
+// Authentication State Management
+let currentUser = null;
+
+// Check if user is logged in
+function checkAuthStatus() {
+    const userData = localStorage.getItem('magicCinemaUser') || sessionStorage.getItem('magicCinemaUser');
+    if (userData) {
+        try {
+            currentUser = JSON.parse(userData);
+            updateAuthUI();
+            return true;
+        } catch (error) {
+            console.log('Invalid user data');
+            return false;
+        }
+    }
+    return false;
+}
+
+// Update UI based on authentication status
+function updateAuthUI() {
+    const signInBtn = document.querySelector('header .btn');
+    if (currentUser) {
+        signInBtn.innerHTML = `<i class='bx bx-user'></i> ${currentUser.name}`;
+        signInBtn.href = '#';
+        signInBtn.onclick = (e) => {
+            e.preventDefault();
+            showUserMenu();
+        };
+    } else {
+        signInBtn.innerHTML = 'Sign In';
+        signInBtn.href = 'auth.html';
+        signInBtn.onclick = null;
+    }
+}
+
+// Show user menu
+function showUserMenu() {
+    const menu = document.createElement('div');
+    menu.className = 'user-menu';
+    menu.innerHTML = `
+        <div class="user-menu-content">
+            <div class="user-info">
+                <i class='bx bx-user-circle'></i>
+                <span>${currentUser.name}</span>
+            </div>
+            <div class="user-menu-actions">
+                <button onclick="viewProfile()" class="menu-btn">
+                    <i class='bx bx-user'></i> Profile
+                </button>
+                <button onclick="viewBookings()" class="menu-btn">
+                    <i class='bx bx-calendar'></i> My Bookings
+                </button>
+                <button onclick="logout()" class="menu-btn logout">
+                    <i class='bx bx-log-out'></i> Logout
+                </button>
+            </div>
+        </div>
+    `;
+    
+    // Add styles
+    menu.style.cssText = `
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        background: rgba(15, 23, 42, 0.95);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        border-radius: 1rem;
+        padding: 1rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        animation: slideDown 0.3s ease-out;
+    `;
+    
+    document.body.appendChild(menu);
+    
+    // Close menu when clicking outside
+    setTimeout(() => {
+        document.addEventListener('click', function closeMenu(e) {
+            if (!menu.contains(e.target) && !e.target.closest('header .btn')) {
+                menu.remove();
+                document.removeEventListener('click', closeMenu);
+            }
+        });
+    }, 100);
+}
+
+// User menu functions
+function viewProfile() {
+    alert(`Profile for ${currentUser.name}\nEmail: ${currentUser.email || 'Not provided'}`);
+}
+
+function viewBookings() {
+    window.location.href = 'bookings.html';
+}
+
+function logout() {
+    localStorage.removeItem('magicCinemaUser');
+    sessionStorage.removeItem('magicCinemaUser');
+    currentUser = null;
+    updateAuthUI();
+    setTimeout(() => {
+        window.location.href = 'index.html';
+    }, 1000);
+}
+
+// Save booking to localStorage
+function saveBooking(bookingData) {
+    // Get existing bookings
+    let bookings = JSON.parse(localStorage.getItem('userBookings')) || [];
+    
+    // Generate unique booking ID
+    const bookingId = `BK${String(bookings.length + 1).padStart(3, '0')}`;
+    
+    // Create new booking object
+    const newBooking = {
+        id: bookingId,
+        movieTitle: bookingData.movie,
+        moviePoster: getMoviePoster(bookingData.movie),
+        showDate: formatSelectedDate(bookingData.showDate),
+        showTime: bookingData.showTime,
+        seat: bookingData.seat,
+        screen: getRandomScreen(),
+        amount: getRandomPrice(),
+        paymentMethod: bookingData.payment,
+        bookingDate: new Date().toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'short', 
+            day: 'numeric' 
+        }),
+        status: 'upcoming',
+        customerName: bookingData.name,
+        customerPhone: bookingData.phone,
+        createdAt: new Date().toISOString()
+    };
+    
+    // Add to bookings array
+    bookings.push(newBooking);
+    
+    // Save back to localStorage
+    localStorage.setItem('userBookings', JSON.stringify(bookings));
+    
+    // Also save to a separate recent bookings for easy access
+    let recentBookings = JSON.parse(localStorage.getItem('recentBookings')) || [];
+    recentBookings.unshift(newBooking);
+    // Keep only last 5 recent bookings
+    recentBookings = recentBookings.slice(0, 5);
+    localStorage.setItem('recentBookings', JSON.stringify(recentBookings));
+    
+    console.log('Booking saved successfully:', newBooking);
+    
+    return bookingId;
+}
+
+// Helper functions for booking data
+function getMoviePoster(movieTitle) {
+    const posterMap = {
+        'Guardians of the Galaxy Volume 2': 'images/home1.jpg',
+        'Thor Love and Thunder': 'images/home2.png',
+        'Spider-Man No Way Home': 'images/home3.jpg',
+        'Avengers: End Game': 'images/home4.png',
+        'Dr. Strange': 'images/m1.jpg',
+        'Pather': 'images/m2.jpg',
+        'Batman VS Superman': 'images/m3.jpg',
+        'John Wick 2': 'images/m4.jpg',
+        'Aquaman': 'images/m5.jpg',
+        'Black Panther': 'images/m6.jpg',
+        'Uncharted': 'images/m7.jpg',
+        'Brahmastra': 'images/m8.jpg',
+        'Mortal Engines': 'images/m9.jpg',
+        'Under World Blood Wars': 'images/m10.jpg'
+    };
+    return posterMap[movieTitle] || 'images/home1.jpg';
+}
+
+function getNextAvailableDate() {
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    return tomorrow.toLocaleDateString('en-US', { 
+        year: 'numeric', 
+        month: 'short', 
+        day: 'numeric' 
+    });
+}
+
+function getRandomShowTime() {
+    const times = ['2:30 PM', '5:00 PM', '7:30 PM', '9:45 PM'];
+    return times[Math.floor(Math.random() * times.length)];
+}
+
+function getRandomScreen() {
+    const screens = ['Screen 1', 'Screen 2', 'Screen 3', 'Screen 4'];
+    return screens[Math.floor(Math.random() * screens.length)];
+}
+
+function getRandomPrice() {
+    const prices = [12.00, 15.00, 16.50, 18.00, 20.00];
+    return prices[Math.floor(Math.random() * prices.length)];
+}
+
+// Format selected date for display
+function formatSelectedDate(dateString) {
+    if (!dateString) return getNextAvailableDate();
+    
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { 
+        year: 'numeric', 
+        month: 'short', 
+        day: 'numeric' 
+    });
+}
+
+// Show booking success notification
+function showBookingSuccessNotification(bookingId, bookingData) {
+    // Create a custom notification element
+    const notification = document.createElement('div');
+    notification.className = 'booking-success-notification';
+    notification.innerHTML = `
+        <div class="notification-content">
+            <div class="notification-icon">
+                <i class='bx bx-check-circle'></i>
+            </div>
+            <div class="notification-text">
+                <h4>Booking Confirmed!</h4>
+                <p>Your ticket for "${bookingData.movie}" has been saved.</p>
+                <div class="booking-details">
+                    <span>Booking ID: ${bookingId}</span>
+                    <span>Date: ${formatSelectedDate(bookingData.showDate)}</span>
+                    <span>Time: ${bookingData.showTime}</span>
+                    <span>Seat: ${bookingData.seat}</span>
+                </div>
+            </div>
+            <button class="notification-close" onclick="this.parentElement.parentElement.remove()">
+                <i class='bx bx-x'></i>
+            </button>
+        </div>
+        <div class="notification-actions">
+            <button onclick="window.location.href='bookings.html'" class="btn-primary">
+                <i class='bx bx-calendar'></i> View My Bookings
+            </button>
+        </div>
+    `;
+    
+    // Add styles
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: white;
+        border-radius: 1rem;
+        padding: 1rem;
+        box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+        z-index: 1000;
+        max-width: 350px;
+        animation: slideInRight 0.3s ease-out;
+    `;
+    
+    // Add to page
+    document.body.appendChild(notification);
+    
+    // Auto remove after 10 seconds
+    setTimeout(() => {
+        if (notification.parentElement) {
+            notification.style.animation = 'slideOutRight 0.3s ease-in';
+            setTimeout(() => {
+                notification.remove();
+            }, 300);
+        }
+    }, 10000);
+}
+
+// Add CSS animations
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideInRight {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideOutRight {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
+    
+    .booking-success-notification .notification-content {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .booking-success-notification .notification-icon {
+        font-size: 2rem;
+        color: white;
+    }
+    
+    .booking-success-notification .notification-text h4 {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+    
+    .booking-success-notification .notification-text p {
+        margin: 0 0 0.5rem 0;
+        opacity: 0.9;
+    }
+    
+    .booking-success-notification .booking-details {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        font-size: 0.9rem;
+        opacity: 0.8;
+    }
+    
+    .booking-success-notification .notification-close {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.2rem;
+        cursor: pointer;
+        padding: 0.25rem;
+        border-radius: 50%;
+        transition: background 0.3s ease;
+        margin-left: auto;
+    }
+    
+    .booking-success-notification .notification-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .booking-success-notification .notification-actions {
+        display: flex;
+        gap: 0.5rem;
+    }
+    
+    .booking-success-notification .btn-primary {
+        flex: 1;
+        padding: 0.75rem 1rem;
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 0.5rem;
+        cursor: pointer;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+    
+    .booking-success-notification .btn-primary:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-1px);
+    }
+`;
+document.head.appendChild(style);
+
 // Header scroll effect
 window.addEventListener('scroll', () => {
     header.classList.toggle('shadow', window.scrollY > 0);
@@ -310,6 +685,9 @@ function resetBookingForm() {
     document.querySelectorAll('.payment-option').forEach(payment => {
         payment.classList.remove('selected');
     });
+    
+    // Reset date picker
+    initializeDatePicker();
 }
 
 // Seat selection
@@ -362,23 +740,149 @@ bookingForm.addEventListener('submit', (e) => {
         return;
     }
     
+    // Get selected date and time
+    const selectedDate = formData.get('showDate');
+    const selectedTime = formData.get('showTime');
+    
+    // Validate date and time
+    if (!selectedDate) {
+        alert('Please select a show date');
+        return;
+    }
+    
+    if (!selectedTime) {
+        alert('Please select a show time');
+        return;
+    }
+    
     // Get form data
     const bookingData = {
         name: formData.get('customerName'),
         phone: formData.get('phoneNumber'),
         movie: formData.get('movieTitle'),
+        showDate: selectedDate,
+        showTime: selectedTime,
         seat: selectedSeat.dataset.seat,
         payment: selectedPayment.dataset.payment
     };
     
-    // Simulate booking process
-    alert(`Booking Confirmed!\n\nName: ${bookingData.name}\nPhone: ${bookingData.phone}\nMovie: ${bookingData.movie}\nSeat: ${bookingData.seat}\nPayment: ${bookingData.payment}`);
+    // Save booking to localStorage
+    const bookingId = saveBooking(bookingData);
+    
+    // Show success message with booking ID
+    alert(`🎉 Booking Confirmed!\n\nBooking ID: ${bookingId}\nMovie: ${bookingData.movie}\nShow Date: ${formatSelectedDate(bookingData.showDate)}\nShow Time: ${bookingData.showTime}\nSeat: ${bookingData.seat}\nPayment: ${bookingData.payment}\n\nYour booking has been saved to your account!`);
     
     closeBookingPopup();
+    
+    // Show success notification
+    showBookingSuccessNotification(bookingId, bookingData);
 });
+
+// Initialize date picker
+function initializeDatePicker() {
+    const dateInput = document.getElementById('showDate');
+    const selectedDateInfo = document.getElementById('selectedDateInfo');
+    
+    if (dateInput) {
+        // Set minimum date to today
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        
+        // Format date for input (YYYY-MM-DD)
+        const minDate = tomorrow.toISOString().split('T')[0];
+        const maxDate = new Date(today.getFullYear(), today.getMonth() + 3, today.getDate()).toISOString().split('T')[0];
+        
+        dateInput.min = minDate;
+        dateInput.max = maxDate;
+        
+        // Set default date to tomorrow
+        dateInput.value = minDate;
+        updateDateInfo(minDate);
+        
+        // Add event listener for date changes
+        dateInput.addEventListener('change', (e) => {
+            updateDateInfo(e.target.value);
+        });
+    }
+}
+
+// Update date information display
+function updateDateInfo(dateString) {
+    const selectedDateInfo = document.getElementById('selectedDateInfo');
+    if (selectedDateInfo && dateString) {
+        const date = new Date(dateString);
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        
+        let dateText = '';
+        
+        if (dateString === tomorrow.toISOString().split('T')[0]) {
+            dateText = 'Tomorrow';
+        } else if (date.toDateString() === today.toDateString()) {
+            dateText = 'Today';
+        } else {
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            dateText = date.toLocaleDateString('en-US', options);
+        }
+        
+        selectedDateInfo.textContent = `Selected: ${dateText}`;
+    }
+}
+
+// Get available show times based on selected date
+function getAvailableShowTimes(selectedDate) {
+    const date = new Date(selectedDate);
+    const dayOfWeek = date.getDay(); // 0 = Sunday, 1 = Monday, etc.
+    
+    // Different show times for different days
+    const weekdayTimes = ['2:30 PM', '5:00 PM', '7:30 PM', '9:45 PM'];
+    const weekendTimes = ['11:00 AM', '2:30 PM', '5:00 PM', '7:30 PM', '9:45 PM'];
+    
+    return (dayOfWeek === 0 || dayOfWeek === 6) ? weekendTimes : weekdayTimes;
+}
+
+// Update show times based on selected date
+function updateShowTimes(selectedDate) {
+    const timeSelect = document.getElementById('showTime');
+    if (timeSelect) {
+        const availableTimes = getAvailableShowTimes(selectedDate);
+        
+        // Clear existing options
+        timeSelect.innerHTML = '<option value="">Choose time</option>';
+        
+        // Add new options
+        availableTimes.forEach(time => {
+            const option = document.createElement('option');
+            option.value = time;
+            option.textContent = time;
+            timeSelect.appendChild(option);
+        });
+    }
+}
 
 // Update all Book Now buttons to open popup
 document.addEventListener('DOMContentLoaded', () => {
+    // Check authentication status on page load
+    checkAuthStatus();
+    
+    // Initialize date picker
+    initializeDatePicker();
+    
+    // Add event listener for date changes to update show times
+    const dateInput = document.getElementById('showDate');
+    if (dateInput) {
+        dateInput.addEventListener('change', (e) => {
+            updateShowTimes(e.target.value);
+        });
+    }
+    
     // Movie cards now have individual buttons, no need for box click events
 });
 

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <title>Magic Cinema</title>
+</head>
+
+<body>
+    <header>
+        <a href="#home" class="logo">
+            <i class='bx bxs-movie'></i> Magic Cinema
+        </a>
+        <div id="menu-icon" class="bx bx-menu"></div>
+
+        <ul class="navbar">
+            <li><a href="#Home" class="home-active">Home</a></li>
+            <li><a href="#Movies">Movies</a></li>
+            <li><a href="#coming">Coming Soon</a></li>
+            <li><a href="#social">Contact Us</a></li>
+        </ul>
+            <a href="index.html" class="btn">Sign In</a>
+    </header>
+    <section id="home" class="home swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide container">
+                <img src="images/home1.jpg" alt="">
+                <div class="home-text">
+                    <span>marvel univers</span>
+                    <h1>Guardians of the galaxy <br> volume 2</h1>
+                    <div class="hero-buttons">
+                        <button class="btn" onclick="openBookingPopup('Guardians of the Galaxy Volume 2')">Book Now</button>
+                        <button class="btn btn-secondary" onclick="openQuickView('Guardians of the Galaxy Volume 2')">Quick View</button>
+                    </div>
+                    <a href="" class="play">
+                        <i class='bx bx-play'></i>
+                    </a>
+                </div>
+            </div>
+            <div class="swiper-slide container">
+                <img src="images/home2.png" alt="">
+                <div class="home-text">
+                    <span>marvel univers</span>
+                    <h1>thor <br> love and thunder</h1>
+                    <div class="hero-buttons">
+                        <button class="btn" onclick="openBookingPopup('Thor Love and Thunder')">Book Now</button>
+                        <button class="btn btn-secondary" onclick="openQuickView('Thor Love and Thunder')">Quick View</button>
+                    </div>
+                    <a href="" class="play">
+                        <i class='bx bx-play'></i>
+                    </a>
+                </div>
+            </div>
+            <div class="swiper-slide container">
+                <img src="images/home3.jpg" alt="">
+                <div class="home-text">
+                    <span>marvel univers</span>
+                    <h1>spider-man <br>no way home </h1>
+                    <div class="hero-buttons">
+                        <button class="btn" onclick="openBookingPopup('Spider-Man No Way Home')">Book Now</button>
+                        <button class="btn btn-secondary" onclick="openQuickView('Spider-Man No Way Home')">Quick View</button>
+                    </div>
+                    <a href="" class="play">
+                        <i class='bx bx-play'></i>
+                    </a>
+                </div>
+            </div>
+            <div class="swiper-slide container">
+                <img src="images/home4.png" alt="">
+                <div class="home-text">
+                    <span>marvel univers</span>
+                    <h1>avengers : <br> End Game</h1>
+                    <div class="hero-buttons">
+                        <button class="btn" onclick="openBookingPopup('Avengers: End Game')">Book Now</button>
+                        <button class="btn btn-secondary" onclick="openQuickView('Avengers: End Game')">Quick View</button>
+                    </div>
+                    <a href="" class="play">
+                        <i class='bx bx-play'></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <div class="swiper-pagination"></div>
+    </section>
+    <div class="Movies" id="Movies">
+        <h2 class="heading"> Opening This Weak </h2>
+        <div class="Movies-contanier">
+            <div class="box" data-movie="Dr. Strange">
+                <div class="box-img">
+                    <img src="images/m1.jpg" alt="Dr. Strange">
+                </div>
+                <div class="box-content">
+                    <h3>Dr. Strange</h3>
+                    <span>120 min | Action</span>
+                    <div class="movie-card-buttons">
+                        <button class="btn" onclick="openBookingPopup('Dr. Strange')">Book Now</button>
+                        <button class="btn btn-secondary" onclick="openQuickView('Dr. Strange')">Quick View</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="box" data-movie="Pather">
+                <div class="box-img">
+                    <img src="images/m2.jpg" alt="Pather">
+                </div>
+                <div class="box-content">
+                    <h3>Pather</h3>
+                    <span>120 min | Action</span>
+                    <div class="movie-card-buttons">
+                        <button class="btn" onclick="openBookingPopup('Pather')">Book Now</button>
+                        <button class="btn btn-secondary" onclick="openQuickView('Pather')">Quick View</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="box" data-movie="Batman VS Superman">
+                <div class="box-img">
+                    <img src="images/m3.jpg" alt="Batman VS Superman">
+                </div>
+                <div class="box-content">
+                    <h3>Batman VS Superman</h3>
+                    <span>120 min | Thriller</span>
+                    <div class="movie-card-buttons">
+                        <button class="btn" onclick="openBookingPopup('Batman VS Superman')">Book Now</button>
+                        <button class="btn btn-secondary" onclick="openQuickView('Batman VS Superman')">Quick View</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="box" data-movie="John Wick 2">
+                <div class="box-img">
+                    <img src="images/m4.jpg" alt="John Wick 2">
+                </div>
+                <div class="box-content">
+                    <h3>John Wick 2</h3>
+                    <span>120 min | Action</span>
+                    <div class="movie-card-buttons">
+                        <button class="btn" onclick="openBookingPopup('John Wick 2')">Book Now</button>
+                        <button class="btn btn-secondary" onclick="openQuickView('John Wick 2')">Quick View</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="box" data-movie="Aquaman">
+                <div class="box-img">
+                    <img src="images/m5.jpg" alt="Aquaman">
+                </div>
+                <div class="box-content">
+                    <h3>Aquaman</h3>
+                    <span>120 min | Adventure</span>
+                    <div class="movie-card-buttons">
+                        <button class="btn" onclick="openBookingPopup('Aquaman')">Book Now</button>
+                        <button class="btn btn-secondary" onclick="openQuickView('Aquaman')">Quick View</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="box" data-movie="Black Panther">
+                <div class="box-img">
+                    <img src="images/m6.jpg" alt="Black Panther">
+                </div>
+                <div class="box-content">
+                    <h3>Black Panther</h3>
+                    <span>120 min | Thriller</span>
+                    <div class="movie-card-buttons">
+                        <button class="btn" onclick="openBookingPopup('Black Panther')">Book Now</button>
+                        <button class="btn btn-secondary" onclick="openQuickView('Black Panther')">Quick View</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="box" data-movie="Uncharted">
+                <div class="box-img">
+                    <img src="images/m7.jpg" alt="Uncharted">
+                </div>
+                <div class="box-content">
+                    <h3>Uncharted</h3>
+                    <span>120 min | Adventure</span>
+                    <div class="movie-card-buttons">
+                        <button class="btn" onclick="openBookingPopup('Uncharted')">Book Now</button>
+                        <button class="btn btn-secondary" onclick="openQuickView('Uncharted')">Quick View</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="box" data-movie="Brahmastra">
+                <div class="box-img">
+                    <img src="images/m8.jpg" alt="Brahmastra">
+                </div>
+                <div class="box-content">
+                    <h3>Brahmastra</h3>
+                    <span>120 min | Thriller</span>
+                    <div class="movie-card-buttons">
+                        <button class="btn" onclick="openBookingPopup('Brahmastra')">Book Now</button>
+                        <button class="btn btn-secondary" onclick="openQuickView('Brahmastra')">Quick View</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="box" data-movie="Mortal Engines">
+                <div class="box-img">
+                    <img src="images/m9.jpg" alt="Mortal Engines">
+                </div>
+                <div class="box-content">
+                    <h3>Mortal Engines</h3>
+                    <span>120 min | Action</span>
+                    <div class="movie-card-buttons">
+                        <button class="btn" onclick="openBookingPopup('Mortal Engines')">Book Now</button>
+                        <button class="btn btn-secondary" onclick="openQuickView('Mortal Engines')">Quick View</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="box" data-movie="Under World Blood Wars">
+                <div class="box-img">
+                    <img src="images/m10.jpg" alt="Under World Blood Wars">
+                </div>
+                <div class="box-content">
+                    <h3>Under World Blood Wars</h3>
+                    <span>120 min | Thriller</span>
+                    <div class="movie-card-buttons">
+                        <button class="btn" onclick="openBookingPopup('Under World Blood Wars')">Book Now</button>
+                        <button class="btn btn-secondary" onclick="openQuickView('Under World Blood Wars')">Quick View</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="coming" id="coming">
+        <h2 class="heading"> Coming Soon</h2>
+        <!--coming container-->
+        <div class="coming-contanier swiper">
+            <div class="swiper-wrapper">
+                <!--box-->
+                <div class="swiper-slide box">
+                    <div class="box-img">
+                        <img src="images/c1.jpg" alt="">
+                    </div>
+                    <h3>Ant-Man and Wasp : Quantania</h3>
+                </div>
+                <!--box 2-->
+                <div class="swiper-slide box">
+                    <div class="box-img">
+                        <img src="images/c2.jpg" alt="">
+                    </div>
+                    <h3>The Flash</h3>
+                </div>
+                <!--box 3-->
+                <div class="swiper-slide box">
+                    <div class="box-img">
+                        <img src="images/c3.jpg" alt="">
+                    </div>
+                    <h3>Guardians of the Galaxy vol.3</h3>
+                </div>
+                <!--box 4-->
+                <div class="swiper-slide box">
+                    <div class="box-img">
+                        <img src="images/c4.jpg" alt="">
+                    </div>
+                    <h3>Shazam! Fury of thr Gods</h3>
+                </div>
+                <!--box 5-->
+                <div class="swiper-slide box">
+                    <div class="box-img">
+                        <img src="images/c5.jpg" alt="">
+                    </div>
+                    <h3>Aquaman and the Lost Kingdom</h3>
+                </div>
+                <!--box 6-->
+                <div class="swiper-slide box">
+                    <div class="box-img">
+                        <img src="images/c6.jpg" alt="">
+                    </div>
+                    <h3>John Wick:chapter 4</h3>
+                </div>
+                <!--box 7-->
+                <div class="swiper-slide box">
+                    <div class="box-img">
+                        <img src="images/c7.jpg" alt="">
+                    </div>
+                    <h3>Transformer rise of the beasts</h3>
+                </div>
+                <!--box 8-->
+                <div class="swiper-slide box">
+                    <div class="box-img">
+                        <img src="images/c8.jpg" alt="">
+                    </div>
+                    <h3>mission: impossible 7</h3>
+                </div>
+                <!--box9-->
+                <div class="swiper-slide box">
+                    <div class="box-img">
+                        <img src="images/c9.png" alt="">
+                    </div>
+                    <h3>Deadpool 3</h3>
+                </div>
+                <!--box 10-->
+                <div class="swiper-slide box">
+                    <div class="box-img">
+                        <img src="images/c10.jpg" alt="">
+                    </div>
+                    <h3>dune: part two: Quantania</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter" id="newsletter">
+        <h2>Subscribe To Get <br>NewsLetter</h2>
+        <form action="">
+            <input type="email" class="email" placeholder="Enter Email" required>
+            <input type="submit" value="Subscribe" class="btn">
+        </form>
+    </section>
+
+
+    <section class="footer">
+        <a href="" class="logo">
+            <i class='bx bxs-movie'></i>Magic Cinema
+        </a>
+        <div class="social" id="social">
+            <a href=""><i class='bx bxl-facebook'></i></a>
+            <a href=""><i class='bx bxl-twitter'></i></a>
+            <a href=""><i class='bx bxl-instagram'></i></a>
+        </div>
+    </section>
+    <div class="copyright">
+        <p>&#169; Magic Cinema All Right Reserved</p>
+    </div>
+
+    <!-- Quick View Popup -->
+    <div class="quick-view-popup" id="quickViewPopup">
+        <div class="quick-view-content">
+            <button class="close-popup" id="closeQuickView">&times;</button>
+            <div class="quick-view-header">
+                <img id="quickViewPoster" src="" alt="">
+                <div class="quick-view-info">
+                    <h2 id="quickViewTitle"></h2>
+                    <div class="quick-view-meta">
+                        <span id="quickViewYear"></span>
+                        <span id="quickViewRating"></span>
+                        <span id="quickViewDuration"></span>
+                        <span id="quickViewGenre"></span>
+                    </div>
+                    <div class="quick-view-plot">
+                        <h3>Plot</h3>
+                        <p id="quickViewDescription"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="quick-view-details">
+                <div class="detail-section">
+                    <h3>Cast</h3>
+                    <p id="quickViewCast"></p>
+                </div>
+                <div class="detail-section">
+                    <h3>Director</h3>
+                    <p id="quickViewDirector"></p>
+                </div>
+                <div class="detail-section">
+                    <h3>Awards</h3>
+                    <p id="quickViewAwards"></p>
+                </div>
+            </div>
+            <div class="quick-view-actions">
+                <button class="btn" onclick="bookFromQuickView()">Book Now</button>
+                <button class="btn btn-secondary" onclick="closeQuickView()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Popup -->
+    <div class="booking-popup" id="bookingPopup">
+        <div class="booking-form">
+            <button class="close-popup" id="closePopup">&times;</button>
+            <h2>Book Your Seat</h2>
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label for="customerName">Full Name</label>
+                    <input type="text" id="customerName" name="customerName" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="movieTitle">Movie</label>
+                    <input type="text" id="movieTitle" name="movieTitle" readonly>
+                </div>
+                
+                <div class="form-group">
+                    <label for="showDate">Select Show Date</label>
+                    <div class="date-picker-container">
+                        <input type="date" id="showDate" name="showDate" required>
+                        <div class="calendar-icon">
+                            <i class='bx bx-calendar'></i>
+                        </div>
+                    </div>
+                    <div class="date-info">
+                        <span class="selected-date-info" id="selectedDateInfo"></span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="showTime">Select Show Time</label>
+                    <div class="time-selection">
+                        <select id="showTime" name="showTime" required>
+                            <option value="">Choose time</option>
+                            <option value="2:30 PM">2:30 PM</option>
+                            <option value="5:00 PM">5:00 PM</option>
+                            <option value="7:30 PM">7:30 PM</option>
+                            <option value="9:45 PM">9:45 PM</option>
+                        </select>
+                        <div class="time-icon">
+                            <i class='bx bx-time'></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Select Seat</label>
+                    <div class="seat-selection">
+                        <div class="seat-option" data-seat="A1">A1</div>
+                        <div class="seat-option" data-seat="A2">A2</div>
+                        <div class="seat-option" data-seat="A3">A3</div>
+                        <div class="seat-option" data-seat="A4">A4</div>
+                        <div class="seat-option" data-seat="A5">A5</div>
+                        <div class="seat-option" data-seat="B1">B1</div>
+                        <div class="seat-option" data-seat="B2">B2</div>
+                        <div class="seat-option" data-seat="B3">B3</div>
+                        <div class="seat-option" data-seat="B4">B4</div>
+                        <div class="seat-option" data-seat="B5">B5</div>
+                        <div class="seat-option" data-seat="C1">C1</div>
+                        <div class="seat-option" data-seat="C2">C2</div>
+                        <div class="seat-option" data-seat="C3">C3</div>
+                        <div class="seat-option" data-seat="C4">C4</div>
+                        <div class="seat-option" data-seat="C5">C5</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Payment Method</label>
+                    <div class="payment-methods">
+                        <div class="payment-option" data-payment="cash">
+                            <i class='bx bx-money'></i>
+                            Cash
+                        </div>
+                        <div class="payment-option" data-payment="card">
+                            <i class='bx bx-credit-card'></i>
+                            Card
+                        </div>
+                        <div class="payment-option" data-payment="mobile">
+                            <i class='bx bx-mobile'></i>
+                            Mobile Payment
+                        </div>
+                        <div class="payment-option" data-payment="online">
+                            <i class='bx bx-world'></i>
+                            Online
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-booking">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="main.js"></script>
+</body>
+
+
+</html>
+
